@@ -1,9 +1,9 @@
 class lua_dict:
     def __init__(self, **info):
-        for x in info.items():
-            if isinstance(x[1], str):
-                exec(f"self.{x[0]} = '{x[1]}'")
+        for x, y in info.items():
+            if isinstance(y, str):
+                exec(f"self.{x} = '{y}'")
             else:
-                exec(f"self.{x[0]} = func", {"func" : x[1], "self" : lua_dict})
+                exec(f"self.{x} = func", {"func" : y, "self" : lua_dict})
 
 
